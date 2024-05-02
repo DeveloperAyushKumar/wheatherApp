@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApiCall</title>
+</head>
+<body>
+    <button id="get">GetData</button>
+    <script>
+        const requesturl="https://api.github.com/users/hiteshchoudhary";
+        const getbtn=document.getElementById("get");
+        var data=null
+        const xhr=new XMLHttpRequest()  // constructor calling
+        xhr.open('GET',requesturl)
+        xhr.onreadystatechange=function (){
+                if(xhr.readyState===4){
+                    console.log("hey")
+                     data=JSON.parse(this.responseText)
+                 
+                    
+                }
+            }
+        getbtn.addEventListener("click",function(){
+            console.log("c1")
+            const para= document.createElement('p');
+                    para.innerText  =data.followers;
+                    console.log(data.followers);
+                    document.body.appendChild(para);
+          
+        })
+        xhr.send()
+
+    </script>
+    
+</body>
+</html>

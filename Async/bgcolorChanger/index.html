@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background color</title>
+</head>
+<body>
+    <div>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+
+    </div>
+    <script>
+        function randomColor(){
+            var arr="0123456789ABCDEF";
+            var color="#";
+            for(var i=0;i<6;i++){
+                color+=arr[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+        function bgColorChanger(){
+document.body.style.background=randomColor();
+
+
+        }
+        var interval=null;
+        const startbtn=document.getElementById("start");
+        const stopbtn=document.getElementById("stop");
+        startbtn.addEventListener("click",function(){
+            if(!interval)
+          interval=  setInterval(bgColorChanger,2000);
+
+        })
+        stopbtn.addEventListener("click",function(){
+            clearInterval(interval);
+            interval=null;
+            
+        })
+    </script>
+</body>
+</html>
